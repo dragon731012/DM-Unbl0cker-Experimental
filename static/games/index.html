@@ -104,7 +104,7 @@
 </style>
 <script>
   function sortThem(s) {
-      Array.prototype.slice.call(document.body.querySelectorAll(s)).sort(function sort (ea, eb) {
+      Array.prototype.slice.call(document.getElementByClassName("buttons")[0].querySelectorAll(s)).sort(function sort (ea, eb) {
           var a = ea.textContent.trim();
           var b = eb.textContent.trim();
           if (a.textContent < b.textContent) return -1;
@@ -114,7 +114,7 @@
           div.parentElement.appendChild(div);
       });
   }
-  sortThem('.games');
+  sortThem('div.games');
   
   var fontsize2=2560/screen.width*7.5;
   searchbar.style.fontSize = fontsize2+"px";
