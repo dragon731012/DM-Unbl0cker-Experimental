@@ -103,15 +103,24 @@
   }
 </style>
 <script>
-    Array.prototype.slice.call(document.getElementsByClassName("games")[0]).sort(function sort (ea, eb) {
-        var a = ea.textContent.trim();
-        var b = eb.textContent.trim();
-        if (a.textContent < b.textContent) return -1;
-        if (a.textContent > b.textContent) return 1;
-        return 0;
-    }).forEach(function(div) {
-        document.getElementsByClassName("buttons")[0].appendChild(div);
-    });
+  var list, i, switching, b, shouldSwitch;
+  list = document.getElementById("buttons");
+  switching = true;
+  while (switching) {
+    switching = false;
+    b = list.getElementsByTagName("div");
+    for (i = 0; i < (b.length - 1); i++) {
+      shouldSwitch = false;
+      if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      b[i].parentNode.insertBefore(b[i + 1], b[i]);
+      switching = true;
+    }
+  }
   
   var fontsize2=2560/screen.width*7.5;
   searchbar.style.fontSize = fontsize2+"px";
